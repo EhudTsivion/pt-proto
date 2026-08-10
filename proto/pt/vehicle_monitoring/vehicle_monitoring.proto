@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package pt.vehicle_monitoring;
+
+import "google/protobuf/timestamp.proto";
+import "pt/common/types.proto";
+
+message VehicleMonitoringUpdate {
+  optional string bearing = 1;
+  optional int64 line_ref = 2;
+  optional int64 operator_ref = 3;
+  google.protobuf.Timestamp origin_aimed_departure_time = 4;
+  optional int64 vehicle_ref = 5;
+  optional int64 velocity = 6;
+  google.protobuf.Timestamp recorded_at_time = 7;
+  pt.common.FramedVehicleJourneyRef framed_vehicle_journey_ref = 8;
+  pt.common.MonitoredCall monitored_call = 9;
+  pt.common.VehicleLocation vehicle_location = 10;
+  google.protobuf.Timestamp response_timestamp = 11;
+}
+
+message SendVehicleMonitoringResponse {
+  bool accepted = 1;
+  string message = 2;
+}
+
+service VehicleMonitoringService {
+  rpc Send(VehicleMonitoringUpdate) returns (SendVehicleMonitoringResponse);
+}

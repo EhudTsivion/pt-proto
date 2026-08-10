@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package pt.common;
+
+import "google/type/date.proto";
+
+message FramedVehicleJourneyRef {
+  google.type.Date data_frame_ref = 1;
+  optional int64 dated_vehicle_journey_ref = 2;
+}
+
+message MonitoredCall {
+  optional int64 distance_from_stop = 1;
+  optional int64 order = 2;
+  optional int64 stop_point_ref = 3;
+}
+
+message VehicleLocation {
+  optional double latitude = 1;
+  optional double longitude = 2;
+}
