@@ -19,11 +19,15 @@ message VehicleMonitoringUpdate {
   google.protobuf.Timestamp response_timestamp = 11;
 }
 
+message VehicleMonitoringUpdatesBatch {
+  repeated VehicleMonitoringUpdate updates = 1;
+}
+
 message SendVehicleMonitoringResponse {
   bool accepted = 1;
-  string message = 2;
 }
 
 service VehicleMonitoringService {
   rpc Send(VehicleMonitoringUpdate) returns (SendVehicleMonitoringResponse);
+  rpc SendBatch(VehicleMonitoringUpdatesBatch) returns (SendVehicleMonitoringResponse);
 }

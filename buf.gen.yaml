@@ -10,7 +10,7 @@ plugins:
     out: gen/ts
     include_imports: true
     opt:
-      - target=ts
+      - target=ts 
   - local: protoc-gen-connect-es
     out: gen/ts
     opt:
