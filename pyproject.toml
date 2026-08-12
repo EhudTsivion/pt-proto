@@ -20,4 +20,5 @@ venv = ".venv"
 
 [tool.setuptools.packages.find]
 where = ["gen"] 
+namespaces = true
 
