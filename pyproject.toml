@@ -17,3 +17,7 @@ include = ["examples/python", "gen/py"]
 extraPaths = ["gen/py"]
 venvPath = "."
 venv = ".venv"
+
+[tool.setuptools.packages.find]
+where = ["gen"] 
+
