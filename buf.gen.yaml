@@ -7,22 +7,22 @@ inputs:
 
 plugins:
   - local: protoc-gen-es
-    out: gen/ts
+    out: gen/tsproto
     include_imports: true
     opt:
       - target=ts 
   - local: protoc-gen-connect-es
-    out: gen/ts
+    out: gen/tsproto
     opt:
       - target=ts
   - remote: buf.build/protocolbuffers/python
-    out: gen/py
+    out: gen/pyproto
     include_imports: true
   - remote: buf.build/protocolbuffers/pyi
-    out: gen/py
+    out: gen/pyproto
     include_imports: true
   - remote: buf.build/connectrpc/py
-    out: gen/py
+    out: gen/pyproto
     include_imports: true
     opt:
       - protobuf=google
