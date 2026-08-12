@@ -13,12 +13,12 @@ dependencies = [
 package = false
 
 [tool.pyright]
-include = ["examples/python", "gen/py"]
-extraPaths = ["gen/py"]
+include = ["examples/python", "gen/pyproto"]
+extraPaths = ["gen/pyproto"]
 venvPath = "."
 venv = ".venv"
 
 [tool.setuptools.packages.find]
-where = ["gen"]
+where = ["gen/pyproto"]
 namespaces = true
 
