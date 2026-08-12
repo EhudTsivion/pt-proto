@@ -2,8 +2,26 @@ syntax = "proto3";
 
 package vehicle_monitoring;
 
+import "ptproto/common/types.proto";
 import "google/protobuf/timestamp.proto";
-import "common/types.proto";
+import "google/type/date.proto";
+
+
+message FramedVehicleJourneyRef {
+  google.type.Date data_frame_ref = 1;
+  optional int64 dated_vehicle_journey_ref = 2;
+}
+
+message MonitoredCall {
+  optional int64 distance_from_stop = 1;
+  optional int64 order = 2;
+  optional int64 stop_point_ref = 3;
+}
+
+message VehicleLocation {
+  optional double latitude = 1;
+  optional double longitude = 2;
+}
 
 message VehicleMonitoringUpdate {
   optional string bearing = 1;
@@ -13,9 +31,9 @@ message VehicleMonitoringUpdate {
   optional int64 vehicle_ref = 5;
   optional int64 velocity = 6;
   google.protobuf.Timestamp recorded_at_time = 7;
-  common.FramedVehicleJourneyRef framed_vehicle_journey_ref = 8;
-  common.MonitoredCall monitored_call = 9;
-  common.VehicleLocation vehicle_location = 10;
+  FramedVehicleJourneyRef framed_vehicle_journey_ref = 8;
+  MonitoredCall monitored_call = 9;
+  VehicleLocation vehicle_location = 10;
   google.protobuf.Timestamp response_timestamp = 11;
 }
 
