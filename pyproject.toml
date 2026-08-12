@@ -19,6 +19,6 @@ venvPath = "."
 venv = ".venv"
 
 [tool.setuptools.packages.find]
-where = ["gen/pyproto"]
+where = ["gen"]
 namespaces = true
 
