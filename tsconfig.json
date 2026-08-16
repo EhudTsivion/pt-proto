@@ -11,6 +11,6 @@
   },
   "include": [
     "examples/ts/**/*.ts",
-    "gen/ts/**/*.ts"
+    "gen/tsproto/**/*.ts"
   ]
 }

@@ -2,17 +2,15 @@ import { Timestamp } from "@bufbuild/protobuf";
 import { createClient } from "@connectrpc/connect";
 import { createConnectTransport } from "@connectrpc/connect-web";
 
-import { Date as ProtoDate } from "../../gen/ts/google/type/date_pb.js";
+import { Date as ProtoDate } from "../../gen/tsproto/google/type/date_pb.js";
 import {
   FramedVehicleJourneyRef,
   MonitoredCall,
   VehicleLocation,
-} from "../../gen/ts/pt/common/types_pb.js";
-import {
   SendVehicleMonitoringResponse,
   VehicleMonitoringUpdate,
-} from "../../gen/ts/pt/vehicle_monitoring/vehicle_monitoring_pb.js";
-import { VehicleMonitoringService } from "../../gen/ts/pt/vehicle_monitoring/vehicle_monitoring_connect.js";
+} from "../../gen/tsproto/ptproto/vehicle_monitoring/vehicle_monitoring_pb.js";
+import { VehicleMonitoringService } from "../../gen/tsproto/ptproto/vehicle_monitoring/vehicle_monitoring_connect.js";
 
 export function buildVehicleMonitoringUpdate(): VehicleMonitoringUpdate {
   const recordedAt = Timestamp.fromDate(new Date("2026-08-10T12:34:56.789Z"));
