@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+/*
+  This module defines consumer-facing services intended for external applications
+  to draw current active vehicle information from our system.
+*/
+
+package vehicle_info;
+
+import "ptproto/common/types.proto";
+import "google/protobuf/timestamp.proto";
+
+
+message GetVehiclesRequest {
+  string h3_index = 1;
+}
+
+message GetVehiclesResponse {
+  repeated common.SingleVehicleMonitoring vehicles_data = 1;
+  google.protobuf.Timestamp response_timestamp = 2;
+}
+
+service ActiveVehicleInfoService {
+  rpc GetVehicles(GetVehiclesRequest) returns (GetVehiclesResponse);
+}
