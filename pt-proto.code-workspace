@@ -7,5 +7,6 @@
 	"settings": {
 		"terminal.integrated.env.windows": {
 		},
+		"files.autoSave": "off"
 	}
 }
