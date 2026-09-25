@@ -1,12 +1,12 @@
 from google.protobuf.message import DecodeError
 
 from send import build_vehicle_monitoring_update
-from pt.vehicle_monitoring.vehicle_monitoring_pb2 import VehicleMonitoringUpdate
+from ptproto.common.types_pb2 import SingleVehicleMonitoring
 
 
 request = build_vehicle_monitoring_update()
 encoded = request.SerializeToString()
-decoded = VehicleMonitoringUpdate()
+decoded = SingleVehicleMonitoring()
 decoded.ParseFromString(encoded)
 
 assert decoded.bearing == "northbound"

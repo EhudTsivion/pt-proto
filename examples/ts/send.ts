@@ -6,16 +6,18 @@ import { Date as ProtoDate } from "../../gen/tsproto/google/type/date_pb.js";
 import {
   FramedVehicleJourneyRef,
   MonitoredCall,
-  VehicleLocation,
+  LocationWGS84,
+  SingleVehicleMonitoring,
+} from "../../gen/tsproto/ptproto/common/types_pb.js";
+import {
   SendVehicleMonitoringResponse,
-  VehicleMonitoringUpdate,
 } from "../../gen/tsproto/ptproto/vehicle_monitoring/vehicle_monitoring_pb.js";
 import { VehicleMonitoringService } from "../../gen/tsproto/ptproto/vehicle_monitoring/vehicle_monitoring_connect.js";
 
-export function buildVehicleMonitoringUpdate(): VehicleMonitoringUpdate {
+export function buildVehicleMonitoringUpdate(): SingleVehicleMonitoring {
   const recordedAt = Timestamp.fromDate(new Date("2026-08-10T12:34:56.789Z"));
 
-  return new VehicleMonitoringUpdate({
+  return new SingleVehicleMonitoring({
     bearing: "northbound",
     lineRef: 42n,
     operatorRef: 7n,
@@ -32,7 +34,7 @@ export function buildVehicleMonitoringUpdate(): VehicleMonitoringUpdate {
       order: 3n,
       stopPointRef: 5678n,
     }),
-    vehicleLocation: new VehicleLocation({
+    vehicleLocation: new LocationWGS84({
       latitude: 52.52,
       longitude: 13.405,
     }),
