@@ -3,250 +3,23 @@
 /* eslint-disable */
 // @ts-nocheck
 
+// 
+//This module defines services intended for us
+//receiving* real-time data from the MOT (ministry of transport) 
+//or any other source.
+
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { Date } from "../../google/type/date_pb.js";
-
-/**
- * @generated from message vehicle_monitoring.FramedVehicleJourneyRef
- */
-export class FramedVehicleJourneyRef extends Message<FramedVehicleJourneyRef> {
-  /**
-   * @generated from field: google.type.Date data_frame_ref = 1;
-   */
-  dataFrameRef?: Date;
-
-  /**
-   * @generated from field: optional int64 dated_vehicle_journey_ref = 2;
-   */
-  datedVehicleJourneyRef?: bigint;
-
-  constructor(data?: PartialMessage<FramedVehicleJourneyRef>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "vehicle_monitoring.FramedVehicleJourneyRef";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "data_frame_ref", kind: "message", T: Date },
-    { no: 2, name: "dated_vehicle_journey_ref", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FramedVehicleJourneyRef {
-    return new FramedVehicleJourneyRef().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FramedVehicleJourneyRef {
-    return new FramedVehicleJourneyRef().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FramedVehicleJourneyRef {
-    return new FramedVehicleJourneyRef().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: FramedVehicleJourneyRef | PlainMessage<FramedVehicleJourneyRef> | undefined, b: FramedVehicleJourneyRef | PlainMessage<FramedVehicleJourneyRef> | undefined): boolean {
-    return proto3.util.equals(FramedVehicleJourneyRef, a, b);
-  }
-}
-
-/**
- * @generated from message vehicle_monitoring.MonitoredCall
- */
-export class MonitoredCall extends Message<MonitoredCall> {
-  /**
-   * @generated from field: optional int64 distance_from_stop = 1;
-   */
-  distanceFromStop?: bigint;
-
-  /**
-   * @generated from field: optional int64 order = 2;
-   */
-  order?: bigint;
-
-  /**
-   * @generated from field: optional int64 stop_point_ref = 3;
-   */
-  stopPointRef?: bigint;
-
-  constructor(data?: PartialMessage<MonitoredCall>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "vehicle_monitoring.MonitoredCall";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "distance_from_stop", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-    { no: 2, name: "order", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-    { no: 3, name: "stop_point_ref", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MonitoredCall {
-    return new MonitoredCall().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MonitoredCall {
-    return new MonitoredCall().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MonitoredCall {
-    return new MonitoredCall().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MonitoredCall | PlainMessage<MonitoredCall> | undefined, b: MonitoredCall | PlainMessage<MonitoredCall> | undefined): boolean {
-    return proto3.util.equals(MonitoredCall, a, b);
-  }
-}
-
-/**
- * @generated from message vehicle_monitoring.VehicleLocation
- */
-export class VehicleLocation extends Message<VehicleLocation> {
-  /**
-   * @generated from field: optional double latitude = 1;
-   */
-  latitude?: number;
-
-  /**
-   * @generated from field: optional double longitude = 2;
-   */
-  longitude?: number;
-
-  constructor(data?: PartialMessage<VehicleLocation>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "vehicle_monitoring.VehicleLocation";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "latitude", kind: "scalar", T: 1 /* ScalarType.DOUBLE */, opt: true },
-    { no: 2, name: "longitude", kind: "scalar", T: 1 /* ScalarType.DOUBLE */, opt: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VehicleLocation {
-    return new VehicleLocation().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VehicleLocation {
-    return new VehicleLocation().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VehicleLocation {
-    return new VehicleLocation().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: VehicleLocation | PlainMessage<VehicleLocation> | undefined, b: VehicleLocation | PlainMessage<VehicleLocation> | undefined): boolean {
-    return proto3.util.equals(VehicleLocation, a, b);
-  }
-}
-
-/**
- * @generated from message vehicle_monitoring.VehicleMonitoringUpdate
- */
-export class VehicleMonitoringUpdate extends Message<VehicleMonitoringUpdate> {
-  /**
-   * @generated from field: optional string bearing = 1;
-   */
-  bearing?: string;
-
-  /**
-   * @generated from field: optional int64 line_ref = 2;
-   */
-  lineRef?: bigint;
-
-  /**
-   * @generated from field: optional int64 operator_ref = 3;
-   */
-  operatorRef?: bigint;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp origin_aimed_departure_time = 4;
-   */
-  originAimedDepartureTime?: Timestamp;
-
-  /**
-   * @generated from field: optional int64 vehicle_ref = 5;
-   */
-  vehicleRef?: bigint;
-
-  /**
-   * @generated from field: optional int64 velocity = 6;
-   */
-  velocity?: bigint;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp recorded_at_time = 7;
-   */
-  recordedAtTime?: Timestamp;
-
-  /**
-   * @generated from field: vehicle_monitoring.FramedVehicleJourneyRef framed_vehicle_journey_ref = 8;
-   */
-  framedVehicleJourneyRef?: FramedVehicleJourneyRef;
-
-  /**
-   * @generated from field: vehicle_monitoring.MonitoredCall monitored_call = 9;
-   */
-  monitoredCall?: MonitoredCall;
-
-  /**
-   * @generated from field: vehicle_monitoring.VehicleLocation vehicle_location = 10;
-   */
-  vehicleLocation?: VehicleLocation;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp response_timestamp = 11;
-   */
-  responseTimestamp?: Timestamp;
-
-  constructor(data?: PartialMessage<VehicleMonitoringUpdate>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "vehicle_monitoring.VehicleMonitoringUpdate";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "bearing", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 2, name: "line_ref", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-    { no: 3, name: "operator_ref", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-    { no: 4, name: "origin_aimed_departure_time", kind: "message", T: Timestamp },
-    { no: 5, name: "vehicle_ref", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-    { no: 6, name: "velocity", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-    { no: 7, name: "recorded_at_time", kind: "message", T: Timestamp },
-    { no: 8, name: "framed_vehicle_journey_ref", kind: "message", T: FramedVehicleJourneyRef },
-    { no: 9, name: "monitored_call", kind: "message", T: MonitoredCall },
-    { no: 10, name: "vehicle_location", kind: "message", T: VehicleLocation },
-    { no: 11, name: "response_timestamp", kind: "message", T: Timestamp },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VehicleMonitoringUpdate {
-    return new VehicleMonitoringUpdate().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VehicleMonitoringUpdate {
-    return new VehicleMonitoringUpdate().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VehicleMonitoringUpdate {
-    return new VehicleMonitoringUpdate().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: VehicleMonitoringUpdate | PlainMessage<VehicleMonitoringUpdate> | undefined, b: VehicleMonitoringUpdate | PlainMessage<VehicleMonitoringUpdate> | undefined): boolean {
-    return proto3.util.equals(VehicleMonitoringUpdate, a, b);
-  }
-}
+import { Message, proto3 } from "@bufbuild/protobuf";
+import { SingleVehicleMonitoring } from "../common/types_pb.js";
 
 /**
  * @generated from message vehicle_monitoring.VehicleMonitoringUpdatesBatch
  */
 export class VehicleMonitoringUpdatesBatch extends Message<VehicleMonitoringUpdatesBatch> {
   /**
-   * @generated from field: repeated vehicle_monitoring.VehicleMonitoringUpdate updates = 1;
+   * @generated from field: repeated common.SingleVehicleMonitoring updates = 1;
    */
-  updates: VehicleMonitoringUpdate[] = [];
+  updates: SingleVehicleMonitoring[] = [];
 
   constructor(data?: PartialMessage<VehicleMonitoringUpdatesBatch>) {
     super();
@@ -256,7 +29,7 @@ export class VehicleMonitoringUpdatesBatch extends Message<VehicleMonitoringUpda
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "vehicle_monitoring.VehicleMonitoringUpdatesBatch";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "updates", kind: "message", T: VehicleMonitoringUpdate, repeated: true },
+    { no: 1, name: "updates", kind: "message", T: SingleVehicleMonitoring, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VehicleMonitoringUpdatesBatch {

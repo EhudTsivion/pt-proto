@@ -3,7 +3,13 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { SendVehicleMonitoringResponse, VehicleMonitoringUpdate, VehicleMonitoringUpdatesBatch } from "./vehicle_monitoring_pb.js";
+// 
+//This module defines services intended for us
+//receiving* real-time data from the MOT (ministry of transport) 
+//or any other source.
+
+import { SingleVehicleMonitoring } from "../common/types_pb.js";
+import { SendVehicleMonitoringResponse, VehicleMonitoringUpdatesBatch } from "./vehicle_monitoring_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -17,7 +23,7 @@ export const VehicleMonitoringService = {
      */
     send: {
       name: "Send",
-      I: VehicleMonitoringUpdate,
+      I: SingleVehicleMonitoring,
       O: SendVehicleMonitoringResponse,
       kind: MethodKind.Unary,
     },

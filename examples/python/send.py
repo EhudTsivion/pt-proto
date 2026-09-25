@@ -3,9 +3,13 @@ from datetime import datetime, timezone
 from google.protobuf.timestamp_pb2 import Timestamp
 from google.type.date_pb2 import Date
 
-from pt.common.types_pb2 import FramedVehicleJourneyRef, MonitoredCall, VehicleLocation
-from pt.vehicle_monitoring.vehicle_monitoring_pb2 import VehicleMonitoringUpdate
-from pt.vehicle_monitoring.vehicle_monitoring_connect import (
+from ptproto.common.types_pb2 import (
+    FramedVehicleJourneyRef,
+    MonitoredCall,
+    LocationWGS84,
+    SingleVehicleMonitoring,
+)
+from ptproto.vehicle_monitoring.vehicle_monitoring_connect import (
     VehicleMonitoringServiceClient,
 )
 
@@ -18,10 +22,10 @@ def timestamp(value: str) -> Timestamp:
     return result
 
 
-def build_vehicle_monitoring_update() -> VehicleMonitoringUpdate:
+def build_vehicle_monitoring_update() -> SingleVehicleMonitoring:
     recorded_at = timestamp("2026-08-10T12:34:56.789Z")
 
-    return VehicleMonitoringUpdate(
+    return SingleVehicleMonitoring(
         bearing="northbound",
         line_ref=42,
         operator_ref=7,
@@ -38,7 +42,7 @@ def build_vehicle_monitoring_update() -> VehicleMonitoringUpdate:
             order=3,
             stop_point_ref=5678,
         ),
-        vehicle_location=VehicleLocation(
+        vehicle_location=LocationWGS84(
             latitude=52.52,
             longitude=13.405,
         ),
