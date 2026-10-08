@@ -9,7 +9,7 @@
 //or any other source.
 
 import { SingleVehicleMonitoring } from "../common/types_pb.js";
-import { SendVehicleMonitoringResponse, VehicleMonitoringUpdatesBatch } from "./vehicle_monitoring_pb.js";
+import { ReceiveVehicleMonitoringResponse, VehicleMonitoringUpdatesBatch } from "./vehicle_monitoring_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -24,16 +24,16 @@ export const VehicleMonitoringService = {
     send: {
       name: "Send",
       I: SingleVehicleMonitoring,
-      O: SendVehicleMonitoringResponse,
+      O: ReceiveVehicleMonitoringResponse,
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc vehicle_monitoring.VehicleMonitoringService.SendBatch
+     * @generated from rpc vehicle_monitoring.VehicleMonitoringService.ReceiveBatch
      */
-    sendBatch: {
-      name: "SendBatch",
+    receiveBatch: {
+      name: "ReceiveBatch",
       I: VehicleMonitoringUpdatesBatch,
-      O: SendVehicleMonitoringResponse,
+      O: ReceiveVehicleMonitoringResponse,
       kind: MethodKind.Unary,
     },
   }

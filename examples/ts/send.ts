@@ -10,7 +10,7 @@ import {
   SingleVehicleMonitoring,
 } from "../../gen/tsproto/ptproto/common/types_pb.js";
 import {
-  SendVehicleMonitoringResponse,
+  ReceiveVehicleMonitoringResponse,
 } from "../../gen/tsproto/ptproto/vehicle_monitoring/vehicle_monitoring_pb.js";
 import { VehicleMonitoringService } from "../../gen/tsproto/ptproto/vehicle_monitoring/vehicle_monitoring_connect.js";
 
@@ -44,7 +44,7 @@ export function buildVehicleMonitoringUpdate(): SingleVehicleMonitoring {
 
 export async function sendVehicleMonitoringUpdate(
   baseUrl: string,
-): Promise<SendVehicleMonitoringResponse> {
+): Promise<ReceiveVehicleMonitoringResponse> {
   const client = createClient(
     VehicleMonitoringService,
     createConnectTransport({ baseUrl }),

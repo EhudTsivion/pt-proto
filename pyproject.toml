@@ -22,3 +22,6 @@ venv = ".venv"
 where = ["gen/pyproto"]
 namespaces = true
 
+[tool.ruff]
+extend-exclude = ["gen"]
+

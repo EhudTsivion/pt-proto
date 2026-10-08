@@ -9,6 +9,8 @@ deps:
 lint:
   use:
     - BASIC
+  except:
+    - PACKAGE_DIRECTORY_MATCH
 
 breaking:
   use:

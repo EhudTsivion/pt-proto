@@ -19,7 +19,7 @@ from connectrpc.server import ConnectASGIApplication, ConnectWSGIApplication, DE
 from ptproto.common.types_pb2 import SingleVehicleMonitoring
 from pyqwest import Client, SyncClient
 
-from .vehicle_monitoring_pb2 import SendVehicleMonitoringResponse, VehicleMonitoringUpdatesBatch
+from .vehicle_monitoring_pb2 import ReceiveVehicleMonitoringResponse, VehicleMonitoringUpdatesBatch
 
 if TYPE_CHECKING:
     from collections.abc import AsyncGenerator, Iterable, Mapping
@@ -36,10 +36,10 @@ _PROTO_BINARY_CODEC = google_protobuf_binary_codec()
 _GZIP_COMPRESSION = GzipCompression()
 
 class VehicleMonitoringService(Protocol):
-    async def send(self, request: SingleVehicleMonitoring, ctx: RequestContext[SingleVehicleMonitoring, SendVehicleMonitoringResponse], /) -> SendVehicleMonitoringResponse:
+    async def send(self, request: SingleVehicleMonitoring, ctx: RequestContext[SingleVehicleMonitoring, ReceiveVehicleMonitoringResponse], /) -> ReceiveVehicleMonitoringResponse:
         raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
 
-    async def send_batch(self, request: VehicleMonitoringUpdatesBatch, ctx: RequestContext[VehicleMonitoringUpdatesBatch, SendVehicleMonitoringResponse], /) -> SendVehicleMonitoringResponse:
+    async def receive_batch(self, request: VehicleMonitoringUpdatesBatch, ctx: RequestContext[VehicleMonitoringUpdatesBatch, ReceiveVehicleMonitoringResponse], /) -> ReceiveVehicleMonitoringResponse:
         raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
 
 
@@ -61,20 +61,20 @@ class VehicleMonitoringServiceASGIApplication(ConnectASGIApplication[VehicleMoni
                         name="Send",
                         service_name="vehicle_monitoring.VehicleMonitoringService",
                         input=SingleVehicleMonitoring,
-                        output=SendVehicleMonitoringResponse,
+                        output=ReceiveVehicleMonitoringResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.send,
                 ),
-                "/vehicle_monitoring.VehicleMonitoringService/SendBatch": Endpoint.unary(
+                "/vehicle_monitoring.VehicleMonitoringService/ReceiveBatch": Endpoint.unary(
                     method=MethodInfo(
-                        name="SendBatch",
+                        name="ReceiveBatch",
                         service_name="vehicle_monitoring.VehicleMonitoringService",
                         input=VehicleMonitoringUpdatesBatch,
-                        output=SendVehicleMonitoringResponse,
+                        output=ReceiveVehicleMonitoringResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=svc.send_batch,
+                    function=svc.receive_batch,
                 ),
             },
             interceptors=interceptors,
@@ -120,34 +120,34 @@ class VehicleMonitoringServiceClient(ConnectClient):
         *,
         headers: Headers | Mapping[str, str] | None = None, 
         timeout_ms: int | None = None,
-    ) -> SendVehicleMonitoringResponse:
+    ) -> ReceiveVehicleMonitoringResponse:
         return await self.execute_unary(
             request=request,
             method=MethodInfo(
                 name="Send",
                 service_name="vehicle_monitoring.VehicleMonitoringService",
                 input=SingleVehicleMonitoring,
-                output=SendVehicleMonitoringResponse,
+                output=ReceiveVehicleMonitoringResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
             timeout_ms=timeout_ms,
         )
 
-    async def send_batch(
+    async def receive_batch(
         self,
         request: VehicleMonitoringUpdatesBatch,
         *,
         headers: Headers | Mapping[str, str] | None = None, 
         timeout_ms: int | None = None,
-    ) -> SendVehicleMonitoringResponse:
+    ) -> ReceiveVehicleMonitoringResponse:
         return await self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="SendBatch",
+                name="ReceiveBatch",
                 service_name="vehicle_monitoring.VehicleMonitoringService",
                 input=VehicleMonitoringUpdatesBatch,
-                output=SendVehicleMonitoringResponse,
+                output=ReceiveVehicleMonitoringResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
@@ -155,10 +155,10 @@ class VehicleMonitoringServiceClient(ConnectClient):
         )
 
 class VehicleMonitoringServiceSync(Protocol):
-    def send(self, request: SingleVehicleMonitoring, ctx: RequestContext[SingleVehicleMonitoring, SendVehicleMonitoringResponse], /) -> SendVehicleMonitoringResponse:
+    def send(self, request: SingleVehicleMonitoring, ctx: RequestContext[SingleVehicleMonitoring, ReceiveVehicleMonitoringResponse], /) -> ReceiveVehicleMonitoringResponse:
         raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
 
-    def send_batch(self, request: VehicleMonitoringUpdatesBatch, ctx: RequestContext[VehicleMonitoringUpdatesBatch, SendVehicleMonitoringResponse], /) -> SendVehicleMonitoringResponse:
+    def receive_batch(self, request: VehicleMonitoringUpdatesBatch, ctx: RequestContext[VehicleMonitoringUpdatesBatch, ReceiveVehicleMonitoringResponse], /) -> ReceiveVehicleMonitoringResponse:
         raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
 
 
@@ -178,20 +178,20 @@ class VehicleMonitoringServiceWSGIApplication(ConnectWSGIApplication):
                         name="Send",
                         service_name="vehicle_monitoring.VehicleMonitoringService",
                         input=SingleVehicleMonitoring,
-                        output=SendVehicleMonitoringResponse,
+                        output=ReceiveVehicleMonitoringResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.send,
                 ),
-                "/vehicle_monitoring.VehicleMonitoringService/SendBatch": EndpointSync.unary(
+                "/vehicle_monitoring.VehicleMonitoringService/ReceiveBatch": EndpointSync.unary(
                     method=MethodInfo(
-                        name="SendBatch",
+                        name="ReceiveBatch",
                         service_name="vehicle_monitoring.VehicleMonitoringService",
                         input=VehicleMonitoringUpdatesBatch,
-                        output=SendVehicleMonitoringResponse,
+                        output=ReceiveVehicleMonitoringResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=service.send_batch,
+                    function=service.receive_batch,
                 ),
             },
             interceptors=interceptors,
@@ -237,33 +237,33 @@ class VehicleMonitoringServiceClientSync(ConnectClientSync):
         *,
         headers: Headers | Mapping[str, str] | None = None, 
         timeout_ms: int | None = None,
-    ) -> SendVehicleMonitoringResponse:
+    ) -> ReceiveVehicleMonitoringResponse:
         return self.execute_unary(
             request=request,
             method=MethodInfo(
                 name="Send",
                 service_name="vehicle_monitoring.VehicleMonitoringService",
                 input=SingleVehicleMonitoring,
-                output=SendVehicleMonitoringResponse,
+                output=ReceiveVehicleMonitoringResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
             timeout_ms=timeout_ms,
         )
-    def send_batch(
+    def receive_batch(
         self,
         request: VehicleMonitoringUpdatesBatch,
         *,
         headers: Headers | Mapping[str, str] | None = None, 
         timeout_ms: int | None = None,
-    ) -> SendVehicleMonitoringResponse:
+    ) -> ReceiveVehicleMonitoringResponse:
         return self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="SendBatch",
+                name="ReceiveBatch",
                 service_name="vehicle_monitoring.VehicleMonitoringService",
                 input=VehicleMonitoringUpdatesBatch,
-                output=SendVehicleMonitoringResponse,
+                output=ReceiveVehicleMonitoringResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

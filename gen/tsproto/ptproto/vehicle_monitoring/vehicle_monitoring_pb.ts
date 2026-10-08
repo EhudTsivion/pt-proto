@@ -50,39 +50,39 @@ export class VehicleMonitoringUpdatesBatch extends Message<VehicleMonitoringUpda
 }
 
 /**
- * @generated from message vehicle_monitoring.SendVehicleMonitoringResponse
+ * @generated from message vehicle_monitoring.ReceiveVehicleMonitoringResponse
  */
-export class SendVehicleMonitoringResponse extends Message<SendVehicleMonitoringResponse> {
+export class ReceiveVehicleMonitoringResponse extends Message<ReceiveVehicleMonitoringResponse> {
   /**
    * @generated from field: bool accepted = 1;
    */
   accepted = false;
 
-  constructor(data?: PartialMessage<SendVehicleMonitoringResponse>) {
+  constructor(data?: PartialMessage<ReceiveVehicleMonitoringResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "vehicle_monitoring.SendVehicleMonitoringResponse";
+  static readonly typeName = "vehicle_monitoring.ReceiveVehicleMonitoringResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "accepted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SendVehicleMonitoringResponse {
-    return new SendVehicleMonitoringResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ReceiveVehicleMonitoringResponse {
+    return new ReceiveVehicleMonitoringResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SendVehicleMonitoringResponse {
-    return new SendVehicleMonitoringResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ReceiveVehicleMonitoringResponse {
+    return new ReceiveVehicleMonitoringResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SendVehicleMonitoringResponse {
-    return new SendVehicleMonitoringResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ReceiveVehicleMonitoringResponse {
+    return new ReceiveVehicleMonitoringResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: SendVehicleMonitoringResponse | PlainMessage<SendVehicleMonitoringResponse> | undefined, b: SendVehicleMonitoringResponse | PlainMessage<SendVehicleMonitoringResponse> | undefined): boolean {
-    return proto3.util.equals(SendVehicleMonitoringResponse, a, b);
+  static equals(a: ReceiveVehicleMonitoringResponse | PlainMessage<ReceiveVehicleMonitoringResponse> | undefined, b: ReceiveVehicleMonitoringResponse | PlainMessage<ReceiveVehicleMonitoringResponse> | undefined): boolean {
+    return proto3.util.equals(ReceiveVehicleMonitoringResponse, a, b);
   }
 }
 
