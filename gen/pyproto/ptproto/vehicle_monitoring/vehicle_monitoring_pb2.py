@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from ptproto.common import types_pb2 as ptproto_dot_common_dot_types__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n3ptproto/vehicle_monitoring/vehicle_monitoring.proto\x12\x12vehicle_monitoring\x1a\x1aptproto/common/types.proto\"Z\n\x1dVehicleMonitoringUpdatesBatch\x12\x39\n\x07updates\x18\x01 \x03(\x0b\x32\x1f.common.SingleVehicleMonitoringR\x07updates\";\n\x1dSendVehicleMonitoringResponse\x12\x1a\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08R\x08\x61\x63\x63\x65pted2\xe9\x01\n\x18VehicleMonitoringService\x12Z\n\x04Send\x12\x1f.common.SingleVehicleMonitoring\x1a\x31.vehicle_monitoring.SendVehicleMonitoringResponse\x12q\n\tSendBatch\x12\x31.vehicle_monitoring.VehicleMonitoringUpdatesBatch\x1a\x31.vehicle_monitoring.SendVehicleMonitoringResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n3ptproto/vehicle_monitoring/vehicle_monitoring.proto\x12\x12vehicle_monitoring\x1a\x1aptproto/common/types.proto\"Z\n\x1dVehicleMonitoringUpdatesBatch\x12\x39\n\x07updates\x18\x01 \x03(\x0b\x32\x1f.common.SingleVehicleMonitoringR\x07updates\">\n ReceiveVehicleMonitoringResponse\x12\x1a\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08R\x08\x61\x63\x63\x65pted2\xf2\x01\n\x18VehicleMonitoringService\x12]\n\x04Send\x12\x1f.common.SingleVehicleMonitoring\x1a\x34.vehicle_monitoring.ReceiveVehicleMonitoringResponse\x12w\n\x0cReceiveBatch\x12\x31.vehicle_monitoring.VehicleMonitoringUpdatesBatch\x1a\x34.vehicle_monitoring.ReceiveVehicleMonitoringResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,8 +34,8 @@ if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_VEHICLEMONITORINGUPDATESBATCH']._serialized_start=103
   _globals['_VEHICLEMONITORINGUPDATESBATCH']._serialized_end=193
-  _globals['_SENDVEHICLEMONITORINGRESPONSE']._serialized_start=195
-  _globals['_SENDVEHICLEMONITORINGRESPONSE']._serialized_end=254
-  _globals['_VEHICLEMONITORINGSERVICE']._serialized_start=257
-  _globals['_VEHICLEMONITORINGSERVICE']._serialized_end=490
+  _globals['_RECEIVEVEHICLEMONITORINGRESPONSE']._serialized_start=195
+  _globals['_RECEIVEVEHICLEMONITORINGRESPONSE']._serialized_end=257
+  _globals['_VEHICLEMONITORINGSERVICE']._serialized_start=260
+  _globals['_VEHICLEMONITORINGSERVICE']._serialized_end=502
 # @@protoc_insertion_point(module_scope)

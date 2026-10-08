@@ -13,7 +13,7 @@ class VehicleMonitoringUpdatesBatch(_message.Message):
     updates: _containers.RepeatedCompositeFieldContainer[_types_pb2.SingleVehicleMonitoring]
     def __init__(self, updates: _Optional[_Iterable[_Union[_types_pb2.SingleVehicleMonitoring, _Mapping]]] = ...) -> None: ...
 
-class SendVehicleMonitoringResponse(_message.Message):
+class ReceiveVehicleMonitoringResponse(_message.Message):
     __slots__ = ("accepted",)
     ACCEPTED_FIELD_NUMBER: _ClassVar[int]
     accepted: bool

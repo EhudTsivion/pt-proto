@@ -14,11 +14,11 @@ message VehicleMonitoringUpdatesBatch {
   repeated common.SingleVehicleMonitoring updates = 1;
 }
 
-message SendVehicleMonitoringResponse {
+message ReceiveVehicleMonitoringResponse {
   bool accepted = 1;
 }
-
+  
 service VehicleMonitoringService {
-  rpc Send(common.SingleVehicleMonitoring) returns (SendVehicleMonitoringResponse);
-  rpc SendBatch(VehicleMonitoringUpdatesBatch) returns (SendVehicleMonitoringResponse);
+  rpc Send(common.SingleVehicleMonitoring) returns (ReceiveVehicleMonitoringResponse);
+  rpc ReceiveBatch(VehicleMonitoringUpdatesBatch) returns (ReceiveVehicleMonitoringResponse);
 }
