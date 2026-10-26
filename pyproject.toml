@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "ConnectRPC vehicle monitoring protocol"
 requires-python = ">=3.11"
 dependencies = [
-  "connectrpc>=0.11.1,<0.12",
+  "connectrpc>=0.13.0",
   "googleapis-common-protos>=1.70.0",
   "protobuf>=6.30.0",
 ]
