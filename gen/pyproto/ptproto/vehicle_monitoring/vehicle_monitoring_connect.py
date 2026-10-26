@@ -16,10 +16,9 @@ from connectrpc.errors import ConnectError
 from connectrpc.method import IdempotencyLevel, MethodInfo
 from connectrpc.protocol import ProtocolType
 from connectrpc.server import ConnectASGIApplication, ConnectWSGIApplication, DEFAULT_READ_MAX_BYTES, Endpoint, EndpointSync
-from ptproto.common.types_pb2 import SingleVehicleMonitoring
 from pyqwest import Client, SyncClient
 
-from .vehicle_monitoring_pb2 import ReceiveVehicleMonitoringResponse, VehicleMonitoringUpdatesBatch
+from .vehicle_monitoring_pb2 import SiriBatchUpdate, SiriResponse
 
 if TYPE_CHECKING:
     from collections.abc import AsyncGenerator, Iterable, Mapping
@@ -35,18 +34,15 @@ _DEFAULT_CODECS = google_protobuf_codecs()
 _PROTO_BINARY_CODEC = google_protobuf_binary_codec()
 _GZIP_COMPRESSION = GzipCompression()
 
-class VehicleMonitoringService(Protocol):
-    async def send(self, request: SingleVehicleMonitoring, ctx: RequestContext[SingleVehicleMonitoring, ReceiveVehicleMonitoringResponse], /) -> ReceiveVehicleMonitoringResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
-
-    async def receive_batch(self, request: VehicleMonitoringUpdatesBatch, ctx: RequestContext[VehicleMonitoringUpdatesBatch, ReceiveVehicleMonitoringResponse], /) -> ReceiveVehicleMonitoringResponse:
+class SiriFeedService(Protocol):
+    async def submit_batch(self, request: SiriBatchUpdate, ctx: RequestContext[SiriBatchUpdate, SiriResponse], /) -> SiriResponse:
         raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
 
 
-class VehicleMonitoringServiceASGIApplication(ConnectASGIApplication[VehicleMonitoringService]):
+class SiriFeedServiceASGIApplication(ConnectASGIApplication[SiriFeedService]):
     def __init__(
         self,
-        service: VehicleMonitoringService | AsyncGenerator[VehicleMonitoringService],
+        service: SiriFeedService | AsyncGenerator[SiriFeedService],
         *,
         interceptors: Iterable[Interceptor] = (),
         read_max_bytes: int | None = DEFAULT_READ_MAX_BYTES,
@@ -56,25 +52,15 @@ class VehicleMonitoringServiceASGIApplication(ConnectASGIApplication[VehicleMoni
         super().__init__(
             service=service,
             endpoints=lambda svc: {
-                "/vehicle_monitoring.VehicleMonitoringService/Send": Endpoint.unary(
+                "/vehicle_monitoring.SiriFeedService/SubmitBatch": Endpoint.unary(
                     method=MethodInfo(
-                        name="Send",
-                        service_name="vehicle_monitoring.VehicleMonitoringService",
-                        input=SingleVehicleMonitoring,
-                        output=ReceiveVehicleMonitoringResponse,
+                        name="SubmitBatch",
+                        service_name="vehicle_monitoring.SiriFeedService",
+                        input=SiriBatchUpdate,
+                        output=SiriResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=svc.send,
-                ),
-                "/vehicle_monitoring.VehicleMonitoringService/ReceiveBatch": Endpoint.unary(
-                    method=MethodInfo(
-                        name="ReceiveBatch",
-                        service_name="vehicle_monitoring.VehicleMonitoringService",
-                        input=VehicleMonitoringUpdatesBatch,
-                        output=ReceiveVehicleMonitoringResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=svc.receive_batch,
+                    function=svc.submit_batch,
                 ),
             },
             interceptors=interceptors,
@@ -86,10 +72,10 @@ class VehicleMonitoringServiceASGIApplication(ConnectASGIApplication[VehicleMoni
     @property
     def path(self) -> str:
         """Returns the URL path to mount the application to when serving multiple applications."""
-        return "/vehicle_monitoring.VehicleMonitoringService"
+        return "/vehicle_monitoring.SiriFeedService"
 
 
-class VehicleMonitoringServiceClient(ConnectClient):
+class SiriFeedServiceClient(ConnectClient):
     def __init__(
         self,
         address: str,
@@ -114,58 +100,35 @@ class VehicleMonitoringServiceClient(ConnectClient):
             interceptors=interceptors,
             http_client=http_client,
         )
-    async def send(
+    async def submit_batch(
         self,
-        request: SingleVehicleMonitoring,
+        request: SiriBatchUpdate,
         *,
         headers: Headers | Mapping[str, str] | None = None, 
         timeout_ms: int | None = None,
-    ) -> ReceiveVehicleMonitoringResponse:
+    ) -> SiriResponse:
         return await self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="Send",
-                service_name="vehicle_monitoring.VehicleMonitoringService",
-                input=SingleVehicleMonitoring,
-                output=ReceiveVehicleMonitoringResponse,
+                name="SubmitBatch",
+                service_name="vehicle_monitoring.SiriFeedService",
+                input=SiriBatchUpdate,
+                output=SiriResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
             timeout_ms=timeout_ms,
         )
 
-    async def receive_batch(
-        self,
-        request: VehicleMonitoringUpdatesBatch,
-        *,
-        headers: Headers | Mapping[str, str] | None = None, 
-        timeout_ms: int | None = None,
-    ) -> ReceiveVehicleMonitoringResponse:
-        return await self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="ReceiveBatch",
-                service_name="vehicle_monitoring.VehicleMonitoringService",
-                input=VehicleMonitoringUpdatesBatch,
-                output=ReceiveVehicleMonitoringResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-class VehicleMonitoringServiceSync(Protocol):
-    def send(self, request: SingleVehicleMonitoring, ctx: RequestContext[SingleVehicleMonitoring, ReceiveVehicleMonitoringResponse], /) -> ReceiveVehicleMonitoringResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
-
-    def receive_batch(self, request: VehicleMonitoringUpdatesBatch, ctx: RequestContext[VehicleMonitoringUpdatesBatch, ReceiveVehicleMonitoringResponse], /) -> ReceiveVehicleMonitoringResponse:
+class SiriFeedServiceSync(Protocol):
+    def submit_batch(self, request: SiriBatchUpdate, ctx: RequestContext[SiriBatchUpdate, SiriResponse], /) -> SiriResponse:
         raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
 
 
-class VehicleMonitoringServiceWSGIApplication(ConnectWSGIApplication):
+class SiriFeedServiceWSGIApplication(ConnectWSGIApplication):
     def __init__(
         self,
-        service: VehicleMonitoringServiceSync,
+        service: SiriFeedServiceSync,
         interceptors: Iterable[InterceptorSync] = (),
         read_max_bytes: int | None = DEFAULT_READ_MAX_BYTES,
         compressions: Iterable[Compression] | None = None,
@@ -173,25 +136,15 @@ class VehicleMonitoringServiceWSGIApplication(ConnectWSGIApplication):
     ) -> None:
         super().__init__(
             endpoints={
-                "/vehicle_monitoring.VehicleMonitoringService/Send": EndpointSync.unary(
+                "/vehicle_monitoring.SiriFeedService/SubmitBatch": EndpointSync.unary(
                     method=MethodInfo(
-                        name="Send",
-                        service_name="vehicle_monitoring.VehicleMonitoringService",
-                        input=SingleVehicleMonitoring,
-                        output=ReceiveVehicleMonitoringResponse,
+                        name="SubmitBatch",
+                        service_name="vehicle_monitoring.SiriFeedService",
+                        input=SiriBatchUpdate,
+                        output=SiriResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=service.send,
-                ),
-                "/vehicle_monitoring.VehicleMonitoringService/ReceiveBatch": EndpointSync.unary(
-                    method=MethodInfo(
-                        name="ReceiveBatch",
-                        service_name="vehicle_monitoring.VehicleMonitoringService",
-                        input=VehicleMonitoringUpdatesBatch,
-                        output=ReceiveVehicleMonitoringResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.receive_batch,
+                    function=service.submit_batch,
                 ),
             },
             interceptors=interceptors,
@@ -203,10 +156,10 @@ class VehicleMonitoringServiceWSGIApplication(ConnectWSGIApplication):
     @property
     def path(self) -> str:
         """Returns the URL path to mount the application to when serving multiple applications."""
-        return "/vehicle_monitoring.VehicleMonitoringService"
+        return "/vehicle_monitoring.SiriFeedService"
 
 
-class VehicleMonitoringServiceClientSync(ConnectClientSync):
+class SiriFeedServiceClientSync(ConnectClientSync):
     def __init__(
         self,
         address: str,
@@ -231,39 +184,20 @@ class VehicleMonitoringServiceClientSync(ConnectClientSync):
             interceptors=interceptors,
             http_client=http_client,
         )
-    def send(
+    def submit_batch(
         self,
-        request: SingleVehicleMonitoring,
+        request: SiriBatchUpdate,
         *,
         headers: Headers | Mapping[str, str] | None = None, 
         timeout_ms: int | None = None,
-    ) -> ReceiveVehicleMonitoringResponse:
+    ) -> SiriResponse:
         return self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="Send",
-                service_name="vehicle_monitoring.VehicleMonitoringService",
-                input=SingleVehicleMonitoring,
-                output=ReceiveVehicleMonitoringResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-    def receive_batch(
-        self,
-        request: VehicleMonitoringUpdatesBatch,
-        *,
-        headers: Headers | Mapping[str, str] | None = None, 
-        timeout_ms: int | None = None,
-    ) -> ReceiveVehicleMonitoringResponse:
-        return self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="ReceiveBatch",
-                service_name="vehicle_monitoring.VehicleMonitoringService",
-                input=VehicleMonitoringUpdatesBatch,
-                output=ReceiveVehicleMonitoringResponse,
+                name="SubmitBatch",
+                service_name="vehicle_monitoring.SiriFeedService",
+                input=SiriBatchUpdate,
+                output=SiriResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

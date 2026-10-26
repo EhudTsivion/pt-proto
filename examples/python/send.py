@@ -10,8 +10,9 @@ from ptproto.common.types_pb2 import (
     SingleVehicleMonitoring,
 )
 from ptproto.vehicle_monitoring.vehicle_monitoring_connect import (
-    VehicleMonitoringServiceClient,
+    SiriFeedServiceClient,
 )
+from ptproto.vehicle_monitoring.vehicle_monitoring_pb2 import SiriBatchUpdate
 
 
 def timestamp(value: str) -> Timestamp:
@@ -51,5 +52,7 @@ def build_vehicle_monitoring_update() -> SingleVehicleMonitoring:
 
 
 async def send_vehicle_monitoring_update(base_url: str):
-    client = VehicleMonitoringServiceClient(base_url)
-    return await client.send(build_vehicle_monitoring_update())
+    client = SiriFeedServiceClient(base_url)
+    return await client.submit_batch(
+        SiriBatchUpdate(updates=[build_vehicle_monitoring_update()])
+    )

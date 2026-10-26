@@ -10,9 +10,10 @@ import {
   SingleVehicleMonitoring,
 } from "../../gen/tsproto/ptproto/common/types_pb.js";
 import {
-  ReceiveVehicleMonitoringResponse,
+  SiriBatchUpdate,
+  SiriResponse,
 } from "../../gen/tsproto/ptproto/vehicle_monitoring/vehicle_monitoring_pb.js";
-import { VehicleMonitoringService } from "../../gen/tsproto/ptproto/vehicle_monitoring/vehicle_monitoring_connect.js";
+import { SiriFeedService } from "../../gen/tsproto/ptproto/vehicle_monitoring/vehicle_monitoring_connect.js";
 
 export function buildVehicleMonitoringUpdate(): SingleVehicleMonitoring {
   const recordedAt = Timestamp.fromDate(new Date("2026-08-10T12:34:56.789Z"));
@@ -44,11 +45,13 @@ export function buildVehicleMonitoringUpdate(): SingleVehicleMonitoring {
 
 export async function sendVehicleMonitoringUpdate(
   baseUrl: string,
-): Promise<ReceiveVehicleMonitoringResponse> {
+): Promise<SiriResponse> {
   const client = createClient(
-    VehicleMonitoringService,
+    SiriFeedService,
     createConnectTransport({ baseUrl }),
   );
 
-  return client.send(buildVehicleMonitoringUpdate());
+  return client.submitBatch(
+    new SiriBatchUpdate({ updates: [buildVehicleMonitoringUpdate()] }),
+  );
 }

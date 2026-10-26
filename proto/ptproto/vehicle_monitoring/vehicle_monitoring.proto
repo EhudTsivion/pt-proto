@@ -10,15 +10,14 @@ package vehicle_monitoring;
 
 import "ptproto/common/types.proto";
 
-message VehicleMonitoringUpdatesBatch {
+message SiriBatchUpdate {
   repeated common.SingleVehicleMonitoring updates = 1;
 }
 
-message ReceiveVehicleMonitoringResponse {
+message SiriResponse {
   bool accepted = 1;
 }
   
-service VehicleMonitoringService {
-  rpc Send(common.SingleVehicleMonitoring) returns (ReceiveVehicleMonitoringResponse);
-  rpc ReceiveBatch(VehicleMonitoringUpdatesBatch) returns (ReceiveVehicleMonitoringResponse);
+service SiriFeedService {
+  rpc SubmitBatch(SiriBatchUpdate) returns (SiriResponse);
 }
