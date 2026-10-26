@@ -10,6 +10,11 @@ message LocationWGS84 {
   optional double longitude = 2;
 }
 
+message VehicleLocation {
+  optional double latitude = 1;
+  optional double longitude = 2;
+}
+
 message FramedVehicleJourneyRef {
   google.type.Date data_frame_ref = 1;
   optional int64 dated_vehicle_journey_ref = 2;
