@@ -44,7 +44,7 @@ class MonitoredCall(_message.Message):
     def __init__(self, distance_from_stop: _Optional[int] = ..., order: _Optional[int] = ..., stop_point_ref: _Optional[int] = ...) -> None: ...
 
 class SingleVehicleMonitoring(_message.Message):
-    __slots__ = ("bearing", "line_ref", "operator_ref", "origin_aimed_departure_time", "vehicle_ref", "velocity", "recorded_at_time", "framed_vehicle_journey_ref", "monitored_call", "vehicle_location", "response_timestamp")
+    __slots__ = ("bearing", "line_ref", "operator_ref", "origin_aimed_departure_time", "vehicle_ref", "velocity", "recorded_at_time", "framed_vehicle_journey_ref", "monitored_call", "vehicle_location", "response_timestamp", "h3_index")
     BEARING_FIELD_NUMBER: _ClassVar[int]
     LINE_REF_FIELD_NUMBER: _ClassVar[int]
     OPERATOR_REF_FIELD_NUMBER: _ClassVar[int]
@@ -56,6 +56,7 @@ class SingleVehicleMonitoring(_message.Message):
     MONITORED_CALL_FIELD_NUMBER: _ClassVar[int]
     VEHICLE_LOCATION_FIELD_NUMBER: _ClassVar[int]
     RESPONSE_TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
+    H3_INDEX_FIELD_NUMBER: _ClassVar[int]
     bearing: str
     line_ref: int
     operator_ref: int
@@ -67,4 +68,5 @@ class SingleVehicleMonitoring(_message.Message):
     monitored_call: MonitoredCall
     vehicle_location: LocationWGS84
     response_timestamp: _timestamp_pb2.Timestamp
-    def __init__(self, bearing: _Optional[str] = ..., line_ref: _Optional[int] = ..., operator_ref: _Optional[int] = ..., origin_aimed_departure_time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., vehicle_ref: _Optional[int] = ..., velocity: _Optional[int] = ..., recorded_at_time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., framed_vehicle_journey_ref: _Optional[_Union[FramedVehicleJourneyRef, _Mapping]] = ..., monitored_call: _Optional[_Union[MonitoredCall, _Mapping]] = ..., vehicle_location: _Optional[_Union[LocationWGS84, _Mapping]] = ..., response_timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    h3_index: str
+    def __init__(self, bearing: _Optional[str] = ..., line_ref: _Optional[int] = ..., operator_ref: _Optional[int] = ..., origin_aimed_departure_time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., vehicle_ref: _Optional[int] = ..., velocity: _Optional[int] = ..., recorded_at_time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., framed_vehicle_journey_ref: _Optional[_Union[FramedVehicleJourneyRef, _Mapping]] = ..., monitored_call: _Optional[_Union[MonitoredCall, _Mapping]] = ..., vehicle_location: _Optional[_Union[LocationWGS84, _Mapping]] = ..., response_timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., h3_index: _Optional[str] = ...) -> None: ...

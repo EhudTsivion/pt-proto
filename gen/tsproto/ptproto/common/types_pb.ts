@@ -244,6 +244,11 @@ export class SingleVehicleMonitoring extends Message<SingleVehicleMonitoring> {
    */
   responseTimestamp?: Timestamp;
 
+  /**
+   * @generated from field: optional string h3_index = 12;
+   */
+  h3Index?: string;
+
   constructor(data?: PartialMessage<SingleVehicleMonitoring>) {
     super();
     proto3.util.initPartial(data, this);
@@ -263,6 +268,7 @@ export class SingleVehicleMonitoring extends Message<SingleVehicleMonitoring> {
     { no: 9, name: "monitored_call", kind: "message", T: MonitoredCall },
     { no: 10, name: "vehicle_location", kind: "message", T: LocationWGS84 },
     { no: 11, name: "response_timestamp", kind: "message", T: Timestamp },
+    { no: 12, name: "h3_index", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SingleVehicleMonitoring {
