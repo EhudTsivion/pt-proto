@@ -13,76 +13,76 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 import { SingleVehicleMonitoring } from "../common/types_pb.js";
 
 /**
- * @generated from message vehicle_monitoring.VehicleMonitoringUpdatesBatch
+ * @generated from message vehicle_monitoring.SiriBatchUpdate
  */
-export class VehicleMonitoringUpdatesBatch extends Message<VehicleMonitoringUpdatesBatch> {
+export class SiriBatchUpdate extends Message<SiriBatchUpdate> {
   /**
    * @generated from field: repeated common.SingleVehicleMonitoring updates = 1;
    */
   updates: SingleVehicleMonitoring[] = [];
 
-  constructor(data?: PartialMessage<VehicleMonitoringUpdatesBatch>) {
+  constructor(data?: PartialMessage<SiriBatchUpdate>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "vehicle_monitoring.VehicleMonitoringUpdatesBatch";
+  static readonly typeName = "vehicle_monitoring.SiriBatchUpdate";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "updates", kind: "message", T: SingleVehicleMonitoring, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VehicleMonitoringUpdatesBatch {
-    return new VehicleMonitoringUpdatesBatch().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SiriBatchUpdate {
+    return new SiriBatchUpdate().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VehicleMonitoringUpdatesBatch {
-    return new VehicleMonitoringUpdatesBatch().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SiriBatchUpdate {
+    return new SiriBatchUpdate().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VehicleMonitoringUpdatesBatch {
-    return new VehicleMonitoringUpdatesBatch().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SiriBatchUpdate {
+    return new SiriBatchUpdate().fromJsonString(jsonString, options);
   }
 
-  static equals(a: VehicleMonitoringUpdatesBatch | PlainMessage<VehicleMonitoringUpdatesBatch> | undefined, b: VehicleMonitoringUpdatesBatch | PlainMessage<VehicleMonitoringUpdatesBatch> | undefined): boolean {
-    return proto3.util.equals(VehicleMonitoringUpdatesBatch, a, b);
+  static equals(a: SiriBatchUpdate | PlainMessage<SiriBatchUpdate> | undefined, b: SiriBatchUpdate | PlainMessage<SiriBatchUpdate> | undefined): boolean {
+    return proto3.util.equals(SiriBatchUpdate, a, b);
   }
 }
 
 /**
- * @generated from message vehicle_monitoring.ReceiveVehicleMonitoringResponse
+ * @generated from message vehicle_monitoring.SiriResponse
  */
-export class ReceiveVehicleMonitoringResponse extends Message<ReceiveVehicleMonitoringResponse> {
+export class SiriResponse extends Message<SiriResponse> {
   /**
    * @generated from field: bool accepted = 1;
    */
   accepted = false;
 
-  constructor(data?: PartialMessage<ReceiveVehicleMonitoringResponse>) {
+  constructor(data?: PartialMessage<SiriResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "vehicle_monitoring.ReceiveVehicleMonitoringResponse";
+  static readonly typeName = "vehicle_monitoring.SiriResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "accepted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ReceiveVehicleMonitoringResponse {
-    return new ReceiveVehicleMonitoringResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SiriResponse {
+    return new SiriResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ReceiveVehicleMonitoringResponse {
-    return new ReceiveVehicleMonitoringResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SiriResponse {
+    return new SiriResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ReceiveVehicleMonitoringResponse {
-    return new ReceiveVehicleMonitoringResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SiriResponse {
+    return new SiriResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: ReceiveVehicleMonitoringResponse | PlainMessage<ReceiveVehicleMonitoringResponse> | undefined, b: ReceiveVehicleMonitoringResponse | PlainMessage<ReceiveVehicleMonitoringResponse> | undefined): boolean {
-    return proto3.util.equals(ReceiveVehicleMonitoringResponse, a, b);
+  static equals(a: SiriResponse | PlainMessage<SiriResponse> | undefined, b: SiriResponse | PlainMessage<SiriResponse> | undefined): boolean {
+    return proto3.util.equals(SiriResponse, a, b);
   }
 }
 

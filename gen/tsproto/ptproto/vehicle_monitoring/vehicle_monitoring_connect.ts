@@ -8,32 +8,22 @@
 //receiving* real-time data from the MOT (ministry of transport) 
 //or any other source.
 
-import { SingleVehicleMonitoring } from "../common/types_pb.js";
-import { ReceiveVehicleMonitoringResponse, VehicleMonitoringUpdatesBatch } from "./vehicle_monitoring_pb.js";
+import { SiriBatchUpdate, SiriResponse } from "./vehicle_monitoring_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
- * @generated from service vehicle_monitoring.VehicleMonitoringService
+ * @generated from service vehicle_monitoring.SiriFeedService
  */
-export const VehicleMonitoringService = {
-  typeName: "vehicle_monitoring.VehicleMonitoringService",
+export const SiriFeedService = {
+  typeName: "vehicle_monitoring.SiriFeedService",
   methods: {
     /**
-     * @generated from rpc vehicle_monitoring.VehicleMonitoringService.Send
+     * @generated from rpc vehicle_monitoring.SiriFeedService.SubmitBatch
      */
-    send: {
-      name: "Send",
-      I: SingleVehicleMonitoring,
-      O: ReceiveVehicleMonitoringResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * @generated from rpc vehicle_monitoring.VehicleMonitoringService.ReceiveBatch
-     */
-    receiveBatch: {
-      name: "ReceiveBatch",
-      I: VehicleMonitoringUpdatesBatch,
-      O: ReceiveVehicleMonitoringResponse,
+    submitBatch: {
+      name: "SubmitBatch",
+      I: SiriBatchUpdate,
+      O: SiriResponse,
       kind: MethodKind.Unary,
     },
   }
