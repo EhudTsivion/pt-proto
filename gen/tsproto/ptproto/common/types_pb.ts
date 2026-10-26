@@ -51,6 +51,49 @@ export class LocationWGS84 extends Message<LocationWGS84> {
 }
 
 /**
+ * @generated from message common.VehicleLocation
+ */
+export class VehicleLocation extends Message<VehicleLocation> {
+  /**
+   * @generated from field: optional double latitude = 1;
+   */
+  latitude?: number;
+
+  /**
+   * @generated from field: optional double longitude = 2;
+   */
+  longitude?: number;
+
+  constructor(data?: PartialMessage<VehicleLocation>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "common.VehicleLocation";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "latitude", kind: "scalar", T: 1 /* ScalarType.DOUBLE */, opt: true },
+    { no: 2, name: "longitude", kind: "scalar", T: 1 /* ScalarType.DOUBLE */, opt: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VehicleLocation {
+    return new VehicleLocation().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VehicleLocation {
+    return new VehicleLocation().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VehicleLocation {
+    return new VehicleLocation().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: VehicleLocation | PlainMessage<VehicleLocation> | undefined, b: VehicleLocation | PlainMessage<VehicleLocation> | undefined): boolean {
+    return proto3.util.equals(VehicleLocation, a, b);
+  }
+}
+
+/**
  * @generated from message common.FramedVehicleJourneyRef
  */
 export class FramedVehicleJourneyRef extends Message<FramedVehicleJourneyRef> {

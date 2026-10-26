@@ -17,6 +17,14 @@ class LocationWGS84(_message.Message):
     longitude: float
     def __init__(self, latitude: _Optional[float] = ..., longitude: _Optional[float] = ...) -> None: ...
 
+class VehicleLocation(_message.Message):
+    __slots__ = ("latitude", "longitude")
+    LATITUDE_FIELD_NUMBER: _ClassVar[int]
+    LONGITUDE_FIELD_NUMBER: _ClassVar[int]
+    latitude: float
+    longitude: float
+    def __init__(self, latitude: _Optional[float] = ..., longitude: _Optional[float] = ...) -> None: ...
+
 class FramedVehicleJourneyRef(_message.Message):
     __slots__ = ("data_frame_ref", "dated_vehicle_journey_ref")
     DATA_FRAME_REF_FIELD_NUMBER: _ClassVar[int]

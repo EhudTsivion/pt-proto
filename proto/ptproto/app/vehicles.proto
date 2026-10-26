@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package app;
+
+import "google/protobuf/timestamp.proto";
+import "ptproto/common/types.proto";
+
+message Vehicle {
+  optional int64 vehicle_ref = 1;
+  common.VehicleLocation location = 2;
+  google.protobuf.Timestamp last_update_time = 3;
+  optional int64 line_ref = 4;
+  optional int64 operator_ref = 5;
+  optional string bearing = 6;
+  optional int64 velocity = 7;
+}
+
+message GetVehiclesRequest {
+  repeated string h3_indices = 1;
+}
+
+message GetVehiclesResponse {
+  repeated Vehicle vehicles = 1;
+}
+
+service VehiclesService {
+  rpc GetVehiclesByH3(GetVehiclesRequest) returns (GetVehiclesResponse);
+}
