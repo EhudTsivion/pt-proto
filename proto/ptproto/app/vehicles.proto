@@ -15,8 +15,8 @@ message Vehicle {
   optional int64 velocity = 7;
 }
 
-message GetVehiclesRequest {
-  repeated string h3_indices = 1;
+message GetVehiclesByH3ixRequest {
+  string h3_index = 1;
 }
 
 message GetVehiclesResponse {
@@ -24,5 +24,5 @@ message GetVehiclesResponse {
 }
 
 service VehiclesService {
-  rpc GetVehiclesByH3(GetVehiclesRequest) returns (GetVehiclesResponse);
+  rpc GetVehiclesByH3(GetVehiclesByH3ixRequest) returns (GetVehiclesResponse);
 }

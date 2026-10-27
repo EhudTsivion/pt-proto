@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { GetVehiclesRequest, GetVehiclesResponse } from "./vehicles_pb.js";
+import { GetVehiclesByH3ixRequest, GetVehiclesResponse } from "./vehicles_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -17,7 +17,7 @@ export const VehiclesService = {
      */
     getVehiclesByH3: {
       name: "GetVehiclesByH3",
-      I: GetVehiclesRequest,
+      I: GetVehiclesByH3ixRequest,
       O: GetVehiclesResponse,
       kind: MethodKind.Unary,
     },
