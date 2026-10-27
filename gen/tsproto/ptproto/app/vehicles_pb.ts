@@ -85,9 +85,9 @@ export class Vehicle extends Message<Vehicle> {
  */
 export class GetVehiclesRequest extends Message<GetVehiclesRequest> {
   /**
-   * @generated from field: repeated string h3_indices = 1;
+   * @generated from field: string h3_index = 1;
    */
-  h3Indices: string[] = [];
+  h3Index = "";
 
   constructor(data?: PartialMessage<GetVehiclesRequest>) {
     super();
@@ -97,7 +97,7 @@ export class GetVehiclesRequest extends Message<GetVehiclesRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "app.GetVehiclesRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "h3_indices", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 1, name: "h3_index", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVehiclesRequest {

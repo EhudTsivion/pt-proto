@@ -16,7 +16,7 @@ message Vehicle {
 }
 
 message GetVehiclesRequest {
-  repeated string h3_indices = 1;
+  string h3_index = 1;
 }
 
 message GetVehiclesResponse {

@@ -29,10 +29,10 @@ class Vehicle(_message.Message):
     def __init__(self, vehicle_ref: _Optional[int] = ..., location: _Optional[_Union[_types_pb2.VehicleLocation, _Mapping]] = ..., last_update_time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., line_ref: _Optional[int] = ..., operator_ref: _Optional[int] = ..., bearing: _Optional[str] = ..., velocity: _Optional[int] = ...) -> None: ...
 
 class GetVehiclesRequest(_message.Message):
-    __slots__ = ("h3_indices",)
-    H3_INDICES_FIELD_NUMBER: _ClassVar[int]
-    h3_indices: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, h3_indices: _Optional[_Iterable[str]] = ...) -> None: ...
+    __slots__ = ("h3_index",)
+    H3_INDEX_FIELD_NUMBER: _ClassVar[int]
+    h3_index: str
+    def __init__(self, h3_index: _Optional[str] = ...) -> None: ...
 
 class GetVehiclesResponse(_message.Message):
     __slots__ = ("vehicles",)
