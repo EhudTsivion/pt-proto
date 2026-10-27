@@ -81,39 +81,39 @@ export class Vehicle extends Message<Vehicle> {
 }
 
 /**
- * @generated from message app.GetVehiclesRequest
+ * @generated from message app.GetVehiclesByH3ixRequest
  */
-export class GetVehiclesRequest extends Message<GetVehiclesRequest> {
+export class GetVehiclesByH3ixRequest extends Message<GetVehiclesByH3ixRequest> {
   /**
    * @generated from field: string h3_index = 1;
    */
   h3Index = "";
 
-  constructor(data?: PartialMessage<GetVehiclesRequest>) {
+  constructor(data?: PartialMessage<GetVehiclesByH3ixRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "app.GetVehiclesRequest";
+  static readonly typeName = "app.GetVehiclesByH3ixRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "h3_index", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVehiclesRequest {
-    return new GetVehiclesRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVehiclesByH3ixRequest {
+    return new GetVehiclesByH3ixRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVehiclesRequest {
-    return new GetVehiclesRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVehiclesByH3ixRequest {
+    return new GetVehiclesByH3ixRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVehiclesRequest {
-    return new GetVehiclesRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVehiclesByH3ixRequest {
+    return new GetVehiclesByH3ixRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: GetVehiclesRequest | PlainMessage<GetVehiclesRequest> | undefined, b: GetVehiclesRequest | PlainMessage<GetVehiclesRequest> | undefined): boolean {
-    return proto3.util.equals(GetVehiclesRequest, a, b);
+  static equals(a: GetVehiclesByH3ixRequest | PlainMessage<GetVehiclesByH3ixRequest> | undefined, b: GetVehiclesByH3ixRequest | PlainMessage<GetVehiclesByH3ixRequest> | undefined): boolean {
+    return proto3.util.equals(GetVehiclesByH3ixRequest, a, b);
   }
 }
 

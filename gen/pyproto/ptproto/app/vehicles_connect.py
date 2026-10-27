@@ -21,7 +21,7 @@ from connectrpc.protocol import ProtocolType
 from connectrpc.server import ConnectASGIApplication, ConnectWSGIApplication, DEFAULT_READ_MAX_BYTES, Endpoint, EndpointSync
 from pyqwest import Client, SyncClient
 
-from .vehicles_pb2 import GetVehiclesRequest, GetVehiclesResponse
+from .vehicles_pb2 import GetVehiclesByH3ixRequest, GetVehiclesResponse
 
 if TYPE_CHECKING:
     from collections.abc import AsyncGenerator, Iterable, Mapping
@@ -38,7 +38,7 @@ _PROTO_BINARY_CODEC = google_protobuf_binary_codec()
 _GZIP_COMPRESSION = GzipCompression()
 
 class VehiclesService(Protocol):
-    async def get_vehicles_by_h3(self, request: GetVehiclesRequest, ctx: RequestContext[GetVehiclesRequest, GetVehiclesResponse], /) -> GetVehiclesResponse:
+    async def get_vehicles_by_h3(self, request: GetVehiclesByH3ixRequest, ctx: RequestContext[GetVehiclesByH3ixRequest, GetVehiclesResponse], /) -> GetVehiclesResponse:
         raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
 
 
@@ -59,7 +59,7 @@ class VehiclesServiceASGIApplication(ConnectASGIApplication[VehiclesService]):
                     method=MethodInfo(
                         name="GetVehiclesByH3",
                         service_name="app.VehiclesService",
-                        input=GetVehiclesRequest,
+                        input=GetVehiclesByH3ixRequest,
                         output=GetVehiclesResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                         stream_type=StreamType.UNARY,
@@ -106,7 +106,7 @@ class VehiclesServiceClient(ConnectClient):
         )
     async def get_vehicles_by_h3(
         self,
-        request: GetVehiclesRequest,
+        request: GetVehiclesByH3ixRequest,
         *,
         headers: Headers | Mapping[str, str] | None = None, 
         timeout_ms: int | None = None,
@@ -116,7 +116,7 @@ class VehiclesServiceClient(ConnectClient):
             method=MethodInfo(
                 name="GetVehiclesByH3",
                 service_name="app.VehiclesService",
-                input=GetVehiclesRequest,
+                input=GetVehiclesByH3ixRequest,
                 output=GetVehiclesResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
                 stream_type=StreamType.UNARY,
@@ -126,7 +126,7 @@ class VehiclesServiceClient(ConnectClient):
         )
 
 class VehiclesServiceSync(Protocol):
-    def get_vehicles_by_h3(self, request: GetVehiclesRequest, ctx: RequestContext[GetVehiclesRequest, GetVehiclesResponse], /) -> GetVehiclesResponse:
+    def get_vehicles_by_h3(self, request: GetVehiclesByH3ixRequest, ctx: RequestContext[GetVehiclesByH3ixRequest, GetVehiclesResponse], /) -> GetVehiclesResponse:
         raise ConnectError(Code.UNIMPLEMENTED, 'Not implemented')
 
 
@@ -145,7 +145,7 @@ class VehiclesServiceWSGIApplication(ConnectWSGIApplication):
                     method=MethodInfo(
                         name="GetVehiclesByH3",
                         service_name="app.VehiclesService",
-                        input=GetVehiclesRequest,
+                        input=GetVehiclesByH3ixRequest,
                         output=GetVehiclesResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                         stream_type=StreamType.UNARY,
@@ -192,7 +192,7 @@ class VehiclesServiceClientSync(ConnectClientSync):
         )
     def get_vehicles_by_h3(
         self,
-        request: GetVehiclesRequest,
+        request: GetVehiclesByH3ixRequest,
         *,
         headers: Headers | Mapping[str, str] | None = None, 
         timeout_ms: int | None = None,
@@ -202,7 +202,7 @@ class VehiclesServiceClientSync(ConnectClientSync):
             method=MethodInfo(
                 name="GetVehiclesByH3",
                 service_name="app.VehiclesService",
-                input=GetVehiclesRequest,
+                input=GetVehiclesByH3ixRequest,
                 output=GetVehiclesResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
                 stream_type=StreamType.UNARY,
