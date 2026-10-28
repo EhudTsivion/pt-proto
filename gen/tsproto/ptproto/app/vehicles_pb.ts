@@ -90,9 +90,9 @@ export class GetVehiclesByH3ixRequest extends Message<GetVehiclesByH3ixRequest> 
   h3Index = "";
 
   /**
-   * @generated from field: optional google.protobuf.Timestamp current_data_timestamp = 2;
+   * @generated from field: optional google.protobuf.Timestamp current_freshness_timestamp = 2;
    */
-  currentDataTimestamp?: Timestamp;
+  currentFreshnessTimestamp?: Timestamp;
 
   constructor(data?: PartialMessage<GetVehiclesByH3ixRequest>) {
     super();
@@ -103,7 +103,7 @@ export class GetVehiclesByH3ixRequest extends Message<GetVehiclesByH3ixRequest> 
   static readonly typeName = "app.GetVehiclesByH3ixRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "h3_index", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "current_data_timestamp", kind: "message", T: Timestamp, opt: true },
+    { no: 2, name: "current_freshness_timestamp", kind: "message", T: Timestamp, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVehiclesByH3ixRequest {
@@ -132,6 +132,11 @@ export class GetVehiclesResponse extends Message<GetVehiclesResponse> {
    */
   vehicles: Vehicle[] = [];
 
+  /**
+   * @generated from field: google.protobuf.Timestamp freshness_timestamp = 2;
+   */
+  freshnessTimestamp?: Timestamp;
+
   constructor(data?: PartialMessage<GetVehiclesResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -141,6 +146,7 @@ export class GetVehiclesResponse extends Message<GetVehiclesResponse> {
   static readonly typeName = "app.GetVehiclesResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "vehicles", kind: "message", T: Vehicle, repeated: true },
+    { no: 2, name: "freshness_timestamp", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVehiclesResponse {

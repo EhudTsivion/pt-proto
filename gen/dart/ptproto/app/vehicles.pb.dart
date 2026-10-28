@@ -158,12 +158,12 @@ class Vehicle extends $pb.GeneratedMessage {
 class GetVehiclesByH3ixRequest extends $pb.GeneratedMessage {
   factory GetVehiclesByH3ixRequest({
     $core.String? h3Index,
-    $1.Timestamp? currentDataTimestamp,
+    $1.Timestamp? currentFreshnessTimestamp,
   }) {
     final result = GetVehiclesByH3ixRequest._();
     if (h3Index != null) result.h3Index = h3Index;
-    if (currentDataTimestamp != null)
-      result.currentDataTimestamp = currentDataTimestamp;
+    if (currentFreshnessTimestamp != null)
+      result.currentFreshnessTimestamp = currentFreshnessTimestamp;
     return result;
   }
 
@@ -181,7 +181,7 @@ class GetVehiclesByH3ixRequest extends $pb.GeneratedMessage {
       package: const $pb.PackageName(_omitMessageNames ? '' : 'app'),
       createEmptyInstance: GetVehiclesByH3ixRequest.$_createMessage)
     ..aOS(1, _omitFieldNames ? '' : 'h3Index')
-    ..aOM<$1.Timestamp>(2, _omitFieldNames ? '' : 'currentDataTimestamp',
+    ..aOM<$1.Timestamp>(2, _omitFieldNames ? '' : 'currentFreshnessTimestamp',
         subBuilder: $1.Timestamp.$_createMessage)
     ..hasRequiredFields = false;
 
@@ -220,23 +220,26 @@ class GetVehiclesByH3ixRequest extends $pb.GeneratedMessage {
   void clearH3Index() => $_clearField(1);
 
   @$pb.TagNumber(2)
-  $1.Timestamp get currentDataTimestamp => $_getN(1);
+  $1.Timestamp get currentFreshnessTimestamp => $_getN(1);
   @$pb.TagNumber(2)
-  set currentDataTimestamp($1.Timestamp value) => $_setField(2, value);
+  set currentFreshnessTimestamp($1.Timestamp value) => $_setField(2, value);
   @$pb.TagNumber(2)
-  $core.bool hasCurrentDataTimestamp() => $_has(1);
+  $core.bool hasCurrentFreshnessTimestamp() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCurrentDataTimestamp() => $_clearField(2);
+  void clearCurrentFreshnessTimestamp() => $_clearField(2);
   @$pb.TagNumber(2)
-  $1.Timestamp ensureCurrentDataTimestamp() => $_ensure(1);
+  $1.Timestamp ensureCurrentFreshnessTimestamp() => $_ensure(1);
 }
 
 class GetVehiclesResponse extends $pb.GeneratedMessage {
   factory GetVehiclesResponse({
     $core.Iterable<Vehicle>? vehicles,
+    $1.Timestamp? freshnessTimestamp,
   }) {
     final result = GetVehiclesResponse._();
     if (vehicles != null) result.vehicles.addAll(vehicles);
+    if (freshnessTimestamp != null)
+      result.freshnessTimestamp = freshnessTimestamp;
     return result;
   }
 
@@ -255,6 +258,8 @@ class GetVehiclesResponse extends $pb.GeneratedMessage {
       createEmptyInstance: GetVehiclesResponse.$_createMessage)
     ..pPM<Vehicle>(1, _omitFieldNames ? '' : 'vehicles',
         subBuilder: Vehicle.$_createMessage)
+    ..aOM<$1.Timestamp>(2, _omitFieldNames ? '' : 'freshnessTimestamp',
+        subBuilder: $1.Timestamp.$_createMessage)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -282,6 +287,17 @@ class GetVehiclesResponse extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $pb.PbList<Vehicle> get vehicles => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $1.Timestamp get freshnessTimestamp => $_getN(1);
+  @$pb.TagNumber(2)
+  set freshnessTimestamp($1.Timestamp value) => $_setField(2, value);
+  @$pb.TagNumber(2)
+  $core.bool hasFreshnessTimestamp() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFreshnessTimestamp() => $_clearField(2);
+  @$pb.TagNumber(2)
+  $1.Timestamp ensureFreshnessTimestamp() => $_ensure(1);
 }
 
 class VehiclesServiceApi {
