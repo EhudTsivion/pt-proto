@@ -1,7 +1,7 @@
 # pt-proto
 
-Protocol Buffer contract and generated ConnectRPC SDKs for vehicle monitoring
-updates in TypeScript and Python.
+Protocol Buffer contract and generated vehicle monitoring code for TypeScript,
+Python, and Dart.
 
 ## Contract
 
@@ -61,14 +61,14 @@ Install the Python environment:
 uv sync
 ```
 
-Generate both SDKs:
+Generate all targets:
 
 ```bash
 npx buf generate
 ```
 
-Generated files are written to `gen/ts` and `gen/py`. They are derived from
-the `.proto` files and should not be edited directly.
+Generated files are written to `gen/tsproto`, `gen/pyproto`, and `gen/dart`.
+They are derived from the `.proto` files and should not be edited directly.
 
 ## TypeScript
 
@@ -117,6 +117,12 @@ uv run python examples/python/smoke_test.py
 
 The smoke test validates nested fields, scalar widths, dates, timestamps, and
 protobuf serialization without requiring a live ConnectRPC server.
+
+## Dart
+
+The Dart target generates protobuf message classes in `gen/dart`. It does not
+generate a ConnectRPC client. Dart consumers need the `protobuf` package
+runtime.
 
 ## Validation
 

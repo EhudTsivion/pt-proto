@@ -26,3 +26,6 @@ plugins:
     include_imports: true
     opt:
       - protobuf=google
+  - remote: buf.build/protocolbuffers/dart
+    out: gen/dart
+    include_imports: true

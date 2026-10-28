@@ -17,6 +17,7 @@ message Vehicle {
 
 message GetVehiclesByH3ixRequest {
   string h3_index = 1;
+  optional google.protobuf.Timestamp current_data_timestamp = 2;
 }
 
 message GetVehiclesResponse {
