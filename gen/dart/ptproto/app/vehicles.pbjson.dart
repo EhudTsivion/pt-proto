@@ -111,27 +111,27 @@ const GetVehiclesByH3ixRequest$json = {
   '2': [
     {'1': 'h3_index', '3': 1, '4': 1, '5': 9, '10': 'h3Index'},
     {
-      '1': 'current_data_timestamp',
+      '1': 'current_freshness_timestamp',
       '3': 2,
       '4': 1,
       '5': 11,
       '6': '.google.protobuf.Timestamp',
       '9': 0,
-      '10': 'currentDataTimestamp',
+      '10': 'currentFreshnessTimestamp',
       '17': true
     },
   ],
   '8': [
-    {'1': '_current_data_timestamp'},
+    {'1': '_current_freshness_timestamp'},
   ],
 };
 
 /// Descriptor for `GetVehiclesByH3ixRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getVehiclesByH3ixRequestDescriptor = $convert.base64Decode(
-    'ChhHZXRWZWhpY2xlc0J5SDNpeFJlcXVlc3QSGQoIaDNfaW5kZXgYASABKAlSB2gzSW5kZXgSVQ'
-    'oWY3VycmVudF9kYXRhX3RpbWVzdGFtcBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3Rh'
-    'bXBIAFIUY3VycmVudERhdGFUaW1lc3RhbXCIAQFCGQoXX2N1cnJlbnRfZGF0YV90aW1lc3RhbX'
-    'A=');
+    'ChhHZXRWZWhpY2xlc0J5SDNpeFJlcXVlc3QSGQoIaDNfaW5kZXgYASABKAlSB2gzSW5kZXgSXw'
+    'obY3VycmVudF9mcmVzaG5lc3NfdGltZXN0YW1wGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRp'
+    'bWVzdGFtcEgAUhljdXJyZW50RnJlc2huZXNzVGltZXN0YW1wiAEBQh4KHF9jdXJyZW50X2ZyZX'
+    'NobmVzc190aW1lc3RhbXA=');
 
 @$core.Deprecated('Use getVehiclesResponseDescriptor instead')
 const GetVehiclesResponse$json = {
@@ -145,13 +145,22 @@ const GetVehiclesResponse$json = {
       '6': '.app.Vehicle',
       '10': 'vehicles'
     },
+    {
+      '1': 'freshness_timestamp',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Timestamp',
+      '10': 'freshnessTimestamp'
+    },
   ],
 };
 
 /// Descriptor for `GetVehiclesResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getVehiclesResponseDescriptor = $convert.base64Decode(
     'ChNHZXRWZWhpY2xlc1Jlc3BvbnNlEigKCHZlaGljbGVzGAEgAygLMgwuYXBwLlZlaGljbGVSCH'
-    'ZlaGljbGVz');
+    'ZlaGljbGVzEksKE2ZyZXNobmVzc190aW1lc3RhbXAYAiABKAsyGi5nb29nbGUucHJvdG9idWYu'
+    'VGltZXN0YW1wUhJmcmVzaG5lc3NUaW1lc3RhbXA=');
 
 const $core.Map<$core.String, $core.dynamic> VehiclesServiceBase$json = {
   '1': 'VehiclesService',

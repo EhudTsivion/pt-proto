@@ -17,11 +17,12 @@ message Vehicle {
 
 message GetVehiclesByH3ixRequest {
   string h3_index = 1;
-  optional google.protobuf.Timestamp current_data_timestamp = 2;
+  optional google.protobuf.Timestamp current_freshness_timestamp = 2;
 }
 
 message GetVehiclesResponse {
   repeated Vehicle vehicles = 1;
+  google.protobuf.Timestamp freshness_timestamp = 2;
 }
 
 service VehiclesService {
