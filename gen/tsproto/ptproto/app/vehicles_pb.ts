@@ -89,6 +89,11 @@ export class GetVehiclesByH3ixRequest extends Message<GetVehiclesByH3ixRequest> 
    */
   h3Index = "";
 
+  /**
+   * @generated from field: optional google.protobuf.Timestamp current_data_timestamp = 2;
+   */
+  currentDataTimestamp?: Timestamp;
+
   constructor(data?: PartialMessage<GetVehiclesByH3ixRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -98,6 +103,7 @@ export class GetVehiclesByH3ixRequest extends Message<GetVehiclesByH3ixRequest> 
   static readonly typeName = "app.GetVehiclesByH3ixRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "h3_index", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "current_data_timestamp", kind: "message", T: Timestamp, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVehiclesByH3ixRequest {

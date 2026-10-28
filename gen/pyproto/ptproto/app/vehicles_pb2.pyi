@@ -29,10 +29,12 @@ class Vehicle(_message.Message):
     def __init__(self, vehicle_ref: _Optional[int] = ..., location: _Optional[_Union[_types_pb2.VehicleLocation, _Mapping]] = ..., last_update_time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., line_ref: _Optional[int] = ..., operator_ref: _Optional[int] = ..., bearing: _Optional[str] = ..., velocity: _Optional[int] = ...) -> None: ...
 
 class GetVehiclesByH3ixRequest(_message.Message):
-    __slots__ = ("h3_index",)
+    __slots__ = ("h3_index", "current_data_timestamp")
     H3_INDEX_FIELD_NUMBER: _ClassVar[int]
+    CURRENT_DATA_TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
     h3_index: str
-    def __init__(self, h3_index: _Optional[str] = ...) -> None: ...
+    current_data_timestamp: _timestamp_pb2.Timestamp
+    def __init__(self, h3_index: _Optional[str] = ..., current_data_timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class GetVehiclesResponse(_message.Message):
     __slots__ = ("vehicles",)

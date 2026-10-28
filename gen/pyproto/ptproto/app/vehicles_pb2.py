@@ -26,7 +26,7 @@ from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__
 from ptproto.common import types_pb2 as ptproto_dot_common_dot_types__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1aptproto/app/vehicles.proto\x12\x03\x61pp\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1aptproto/common/types.proto\"\xf9\x02\n\x07Vehicle\x12$\n\x0bvehicle_ref\x18\x01 \x01(\x03H\x00R\nvehicleRef\x88\x01\x01\x12\x33\n\x08location\x18\x02 \x01(\x0b\x32\x17.common.VehicleLocationR\x08location\x12\x44\n\x10last_update_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0elastUpdateTime\x12\x1e\n\x08line_ref\x18\x04 \x01(\x03H\x01R\x07lineRef\x88\x01\x01\x12&\n\x0coperator_ref\x18\x05 \x01(\x03H\x02R\x0boperatorRef\x88\x01\x01\x12\x1d\n\x07\x62\x65\x61ring\x18\x06 \x01(\tH\x03R\x07\x62\x65\x61ring\x88\x01\x01\x12\x1f\n\x08velocity\x18\x07 \x01(\x03H\x04R\x08velocity\x88\x01\x01\x42\x0e\n\x0c_vehicle_refB\x0b\n\t_line_refB\x0f\n\r_operator_refB\n\n\x08_bearingB\x0b\n\t_velocity\"5\n\x18GetVehiclesByH3ixRequest\x12\x19\n\x08h3_index\x18\x01 \x01(\tR\x07h3Index\"?\n\x13GetVehiclesResponse\x12(\n\x08vehicles\x18\x01 \x03(\x0b\x32\x0c.app.VehicleR\x08vehicles2]\n\x0fVehiclesService\x12J\n\x0fGetVehiclesByH3\x12\x1d.app.GetVehiclesByH3ixRequest\x1a\x18.app.GetVehiclesResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1aptproto/app/vehicles.proto\x12\x03\x61pp\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1aptproto/common/types.proto\"\xf9\x02\n\x07Vehicle\x12$\n\x0bvehicle_ref\x18\x01 \x01(\x03H\x00R\nvehicleRef\x88\x01\x01\x12\x33\n\x08location\x18\x02 \x01(\x0b\x32\x17.common.VehicleLocationR\x08location\x12\x44\n\x10last_update_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0elastUpdateTime\x12\x1e\n\x08line_ref\x18\x04 \x01(\x03H\x01R\x07lineRef\x88\x01\x01\x12&\n\x0coperator_ref\x18\x05 \x01(\x03H\x02R\x0boperatorRef\x88\x01\x01\x12\x1d\n\x07\x62\x65\x61ring\x18\x06 \x01(\tH\x03R\x07\x62\x65\x61ring\x88\x01\x01\x12\x1f\n\x08velocity\x18\x07 \x01(\x03H\x04R\x08velocity\x88\x01\x01\x42\x0e\n\x0c_vehicle_refB\x0b\n\t_line_refB\x0f\n\r_operator_refB\n\n\x08_bearingB\x0b\n\t_velocity\"\xa7\x01\n\x18GetVehiclesByH3ixRequest\x12\x19\n\x08h3_index\x18\x01 \x01(\tR\x07h3Index\x12U\n\x16\x63urrent_data_timestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00R\x14\x63urrentDataTimestamp\x88\x01\x01\x42\x19\n\x17_current_data_timestamp\"?\n\x13GetVehiclesResponse\x12(\n\x08vehicles\x18\x01 \x03(\x0b\x32\x0c.app.VehicleR\x08vehicles2]\n\x0fVehiclesService\x12J\n\x0fGetVehiclesByH3\x12\x1d.app.GetVehiclesByH3ixRequest\x1a\x18.app.GetVehiclesResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,10 +35,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_VEHICLE']._serialized_start=97
   _globals['_VEHICLE']._serialized_end=474
-  _globals['_GETVEHICLESBYH3IXREQUEST']._serialized_start=476
-  _globals['_GETVEHICLESBYH3IXREQUEST']._serialized_end=529
-  _globals['_GETVEHICLESRESPONSE']._serialized_start=531
-  _globals['_GETVEHICLESRESPONSE']._serialized_end=594
-  _globals['_VEHICLESSERVICE']._serialized_start=596
-  _globals['_VEHICLESSERVICE']._serialized_end=689
+  _globals['_GETVEHICLESBYH3IXREQUEST']._serialized_start=477
+  _globals['_GETVEHICLESBYH3IXREQUEST']._serialized_end=644
+  _globals['_GETVEHICLESRESPONSE']._serialized_start=646
+  _globals['_GETVEHICLESRESPONSE']._serialized_end=709
+  _globals['_VEHICLESSERVICE']._serialized_start=711
+  _globals['_VEHICLESSERVICE']._serialized_end=804
 # @@protoc_insertion_point(module_scope)
